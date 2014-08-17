@@ -1,5 +1,4 @@
-(ns brave-clojure.hobbit-violence
-  (:gen-class))
+(ns brave-clojure.hobbit)
 
 (def asym-hobbit-body-parts [{:name "head" :size 3}
                              {:name "left-eye" :size 1}
@@ -21,6 +20,25 @@
                              {:name "left-achilles" :size 1}
                              {:name "left-foot" :size 2}])
 
+(defn has-matching-part?
+  [part]
+  (re-find #"^left-" (:name part)))
 
+(defn matching-part
+  [part]
+  {:name (clojure.string/replace (:name part) #"^left-" "right-")
+   :size (:size part)})
 
+(defn symmetrize-body-parts
+  "Expects a seq of maps which have a :name and :size"
+  [asym-body-parts]
+  (loop [remaining-asym-parts asym-body-parts
+         final-body-parts []]
+    (if (empty? remaining-asym-parts)
+      final-body-parts
+        (let [[part & remaining] remaining-asym-parts
+              final-body-parts (conj final-body-parts part)]
+          (if (has-matching-part? part)
+            (recur remaining (conj final-body-parts (matching-part part)))
+            (recur remaining final-body-parts))))))
 
