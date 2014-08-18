@@ -1,3 +1,5 @@
+;; Notes on "Do Things" chapter.
+
 (ns brave-clojure.hobbit
   (:require
    [clojure.tools.trace  :refer :all]))

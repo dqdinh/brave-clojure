@@ -12,5 +12,6 @@
    [clojure.test :as test]
    [clojure.tools.namespace.repl :refer [refresh refresh-all]]
    [clojure.tools.trace  :refer :all]
-   [brave-clojure.hobbit :refer :all]))
+   [brave-clojure.hobbit :refer :all]
+   [brave-clojure.vampires :refer :all]))
 
