@@ -84,21 +84,3 @@
   (filter #(>= (:glitter-index %) minimum-glitter) records))
 
 ;; (mapify (parse (slurp (clojure.java.io/resource "../resources/suspects.csv"))))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
